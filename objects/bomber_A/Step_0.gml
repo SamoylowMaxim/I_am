@@ -1,0 +1,24 @@
+if global.hpA <= 0 {
+	instance_destroy(hpA)
+	global.a -= 1;
+	instance_destroy(self)
+}
+
+if (global.actA = 1 && !instance_exists(dmgdeal) && !audio_is_playing(s_laser)){
+	instance_create_depth(x+85,y-26,-12,arrow)
+	global.time -= 1;
+	global.dealtdmg = -3;
+	if global.time = 0 {
+		global.dealtdmg = round(irandom_range(20,25-global.art3*3)*global.hard)
+		instance_create_depth(0,0,-12,ans_enemy)
+		instance_create_depth(hero_fight.x+85, hero_fight.y+96,-12,dmgdeal)
+		global.hp -= global.dealtdmg
+		global.hull -= global.dealtdmg
+		global.actA = 0
+		global.hpA = 0;
+	}
+	instance_destroy(ans_enemy)
+	instance_create_depth(-100, -100,-12,dmgdeal)
+	instance_create_depth(0,0,-12,ans_enemy)
+	global.actA = 0
+}

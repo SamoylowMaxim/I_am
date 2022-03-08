@@ -1,0 +1,2 @@
+instance_destroy(input_line)
+instance_destroy(self)
